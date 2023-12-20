@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link'
 import React from 'react'
 
@@ -10,8 +11,11 @@ import {
   DrawerHeader,
   DrawerOverlay,
   useBreakpointValue,
-  useDisclosure,
+  Button,
+  useDisclosure
 } from "@chakra-ui/react"
+
+
 
 const Navbar = () => {
 
@@ -24,7 +28,7 @@ const Navbar = () => {
       <Box display={{ lg: "flex" }} flexBasis={{ lg: "auto" }}>
       {isDrawerSidebar ? (
         <>
-          <button onClick={onOpen}>Open Menu</button>
+          <Button onClick={onOpen}>Open Menu</Button>
           <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay>
               <DrawerContent>
@@ -39,7 +43,7 @@ const Navbar = () => {
           </Drawer>
         </>
       ) : (
-        <nav className='flex flex-row justify-between'>
+        <nav className='flex flex-row justify-evenly w-screen bg-white bg-opacity-80 px-12 shadow-lg py-4'>
           <Link href='/Explore'>Explore</Link>
           <Link href='/Post'>Create Post</Link>
         </nav>

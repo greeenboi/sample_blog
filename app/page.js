@@ -10,7 +10,7 @@ export default function Home() {
       <section className="w-screen h-[420px] md:h-[500px] lg:h-[720px] overflow-hidden bg-hero-pattern object-cover bg-center bg-cover bg-no-repeat bg-blend-soft-light">
       <Navbar />
       </section>
-      <section className="flex flex-wrap md:flex-row ">
+      <section className="flex flex-wrap md:flex-row min-h-screen">
         <BlogPosts/>
         <Authors/>
       </section>
