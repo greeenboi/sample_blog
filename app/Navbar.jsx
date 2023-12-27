@@ -43,7 +43,7 @@ const Navbar = () => {
           </Drawer>
         </>
       ) : (
-        <nav className='flex flex-row justify-evenly w-screen bg-white bg-opacity-80 px-12 shadow-lg py-4'>
+        <nav className='flex flex-row justify-evenly w-screen bg-white shadow-lg px-12 py-4'>
           <Link href='/Explore'>Explore</Link>
           <Link href='/Post'>Create Post</Link>
         </nav>
