@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { supabase } from '../supabase.config'
 import { Button, Input, Textarea } from '@chakra-ui/react'
 
@@ -10,26 +10,37 @@ function page() {
   const [ tags, setTags ] = useState([''])
   const [files, setFiles] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [shouldCreatePost, setShouldCreatePost] = useState(false);
+
+  const filename = Math.random().toString().substring(2) + '.png';
 
   const uploadPost = async () => {
-  setLoading(true)
-  const filename = Math.random().toString().substring(2) + '.png';
-  const { data, error: storageError } = await supabase
-  .storage
-  .from('banner')
-  .upload(filename, files, {
-    cacheControl: '3600',
-    upsert: false
-  })
-  if (storageError) alert(storageError.message)
+    if (!files) return alert('You must select an image to upload.')
 
-  const { data: publicUrl } = supabase
-  .storage
-  .from('public-bucket')
-  .getPublicUrl(filename)
-  setBannerUrl(publicUrl.publicUrl, async () => {
+    const { data, error: storageError } = await supabase
+    .storage
+    .from('banner')
+    .upload(filename, files, {
+      cacheControl: '3600',
+      upsert: false
+    })
+    if (storageError) alert(storageError.message)
+    else alert('Upload complete!')
+    console.log(data)
+  }
+
+  const getBannerUrl = async () => {
+    const { data: publicUrl } = supabase
+    .storage
+    .from('banner')
+    .getPublicUrl(filename)
+    setBannerUrl(publicUrl.publicUrl)
     console.log(publicUrl.publicUrl)
-  
+
+  }
+
+  const createPost = async () => {
+    
     const { error: uploadError } = await supabase
       .from('posts')
       .insert({
@@ -40,8 +51,23 @@ function page() {
       })
     if (uploadError) alert(uploadError.message)
     else alert('Post created!') && setLoading(false)
-  })
   }
+
+  useEffect(() => {
+    if (shouldCreatePost && banner_url) {
+      createPost();
+      setShouldCreatePost(false); 
+    }
+  }, [shouldCreatePost, banner_url]);
+
+  const handleButtonClick = async () => {
+    setLoading(true)
+    await uploadPost();
+    await getBannerUrl();
+    setShouldCreatePost(true);
+    setLoading(false)
+  }
+
 
   return (
     <main className='w-screen h-auto flex flex-col justify-center items-center'>
@@ -79,7 +105,9 @@ function page() {
           <Button
             className='w-1/2 h-10 border-2 border-gray-400 rounded-md p-2 m-2'
             type='button'
-            onClick={uploadPost}
+            onClick={handleButtonClick}
+            disabled={loading}
+            isLoading={loading}
           >
             Create Post
           </Button>

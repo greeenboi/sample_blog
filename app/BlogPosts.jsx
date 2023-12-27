@@ -13,7 +13,7 @@ const BlogPosts = () => {
     const fetchPosts = async () => {
       let { data: posts, error } = await supabase
         .from('posts')
-        .select()
+        .select('*')
       console.log(posts)
       if(error) console.log(error) 
       else setBlogPosts(posts) && console.log(posts)
