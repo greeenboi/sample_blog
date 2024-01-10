@@ -14,6 +14,7 @@ function page() {
   const [files, setFiles] = useState(null)
   const [loading, setLoading] = useState(false)
   const [shouldCreatePost, setShouldCreatePost] = useState(false);
+  const [fileName, setFileName] = useState('');
 
   const filename = Math.random().toString().substring(2) + '.png';
 
@@ -109,11 +110,15 @@ function page() {
           />
           <label className='w-full h-fit border text-gray-600 border-gray-200 rounded-md p-2 m-2 cursor-pointer'>
           <span className='h-max w-max flex items-center justify-evenly '><FaPlus /> Upload Images</span>
+          <span>{fileName}</span>
             <Input
               className='hidden'
               type='file'
               accept='image/*'
-              onChange={(e) => setFiles(e.target.files[0])}
+              onChange={(e) => {
+                setFiles(e.target.files[0]);
+                setFileName(e.target.files[0] ? e.target.files[0].name : '');
+              }}
             />
           </label>
           
