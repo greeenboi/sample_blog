@@ -98,7 +98,7 @@ const BlogPosts = () => {
             <CardHeader>
               <Flex spacing='4'>
                 <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                  <Avatar name='Segun Adebayo' src='https://bit.ly/null' />
+                  <Avatar name={post.title} src='https://bit.ly/null' />
           
                   <Box>
                     <Heading size='sm'>Author</Heading>
