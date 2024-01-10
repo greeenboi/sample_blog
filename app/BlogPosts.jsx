@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { supabase } from './supabase.config'
-import { Avatar, Box, Button, Card, CardBody, CardFooter, CardHeader, Flex, Heading, IconButton, Image, Spinner, Text } from '@chakra-ui/react'
+import { Avatar, Badge, Box, Button, Card, CardBody, CardFooter, CardHeader, Flex, Heading, IconButton, Image, Spinner, Text } from '@chakra-ui/react'
 import { BiLike, BiShare } from 'react-icons/bi'
 import { useRouter } from 'next/navigation'
 import { FaCircleInfo } from "react-icons/fa6";
@@ -12,7 +12,8 @@ export const fetchCache = 'force-no-store'
 const BlogPosts = () => {
 
   const [BlogPosts, setBlogPosts] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
+  const [liking , setLiking] = useState(false)
 
   const Router = useRouter()
 
@@ -35,6 +36,52 @@ const BlogPosts = () => {
 
   
   
+  const handleLikeCounter = async (voteCount, id) => {
+    console.log(voteCount, id)
+    const newCount = voteCount + 1
+    setLiking(true)
+    const { data, error } = await supabase
+      .from('posts')
+      .update({ votes: newCount })
+      .eq('id', id)
+    
+      
+    if(error) console.log(error)
+    else {
+      console.log(data)
+      const newPosts = BlogPosts.map(post => {
+        if(post.id === id) {
+          return {...post, votes: newCount}
+        } else {
+          return post
+        }
+      })
+      setBlogPosts(newPosts)
+    }
+    setLiking(false)
+  }
+
+  const handleShare = (url) => {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Check out this post!',
+        url: url,
+      })
+      .then(() => console.log('Successful share'))
+      .catch((error) => console.log('Error sharing', error));
+    } else {
+      console.log('Share not supported on this browser, copy this link:', url);
+    }
+  }
+
+  const truncateText = (text, wordLimit) => {
+    const words = text.split(' ');
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(' ') + '...';
+    } else {
+      return text;
+    }
+  }
 
   const handlePostNavigate = (id) => {
       Router.push(`/Explore/${id}`)
@@ -76,8 +123,13 @@ const BlogPosts = () => {
             />
             <CardBody >
               <Heading size='md'>{post.title}</Heading>
+              <div className='flex flex-row gap-4'>
+                {post.tags && post.tags.map((tag) => (
+                  <Badge variant='subtle' colorScheme='teal'  key={tag} className="mx-4 my-2">{`#${tag}`}</Badge >
+                ))}
+              </div>
               <Text>
-              {post.content}
+              {truncateText(post.content, 30)}
               </Text>
             </CardBody>
           
@@ -90,10 +142,10 @@ const BlogPosts = () => {
                 },
               }}
             >
-              <Button flex='1' variant='ghost' leftIcon={<BiLike />}>
+              <Button flex='1' isLoading={liking} disabled={liking} variant='ghost' leftIcon={<BiLike />} onClick={() => handleLikeCounter(post.votes, post.id)}>
                 {post.votes}
               </Button>
-              <Button flex='1' variant='ghost' leftIcon={<BiShare />}>
+              <Button flex='1' variant='ghost' leftIcon={<BiShare />} onClick={() => handleShare(`http://localhost:3000/Explore/${post.id}`)}> {/*change url on deployment */}
                 Share
               </Button>
             </CardFooter>

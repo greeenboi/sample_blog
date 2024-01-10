@@ -12,6 +12,7 @@ module.exports = {
         'hero-pattern': "url('/heroimg.jpg')",
         'explore-pattern': "url('/exploreimg.jpg')",
         'post-pattern': "url('/postimg.jpg')",
+        'slug-pattern': "url('/slugimg.jpg')",
       },
       fontFamily:{
         'Tilt': ['Tilt Prism', 'sans-serif'],
