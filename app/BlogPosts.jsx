@@ -41,7 +41,7 @@ const BlogPosts = () => {
   }
 
   return (
-    <div className=' grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 w-fit gap-4 h-fit justify-evenly md: mx-6 my-4'>
+    <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-fit gap-4 h-fit justify-evenly md: mx-6 my-4'>
       { loading && <Spinner size='xl' className=' self-center my-6' />}
       {BlogPosts.length === 0 ? (
           <div>No posts</div>

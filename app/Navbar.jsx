@@ -17,6 +17,8 @@ import {
 import Voyage from '@/public/voyage.svg'
 import Image from 'next/image'
 import { BiPlusCircle } from 'react-icons/bi'
+import { GiHamburgerMenu } from "react-icons/gi";
+
 
 const Navbar = () => {
 
@@ -30,13 +32,13 @@ const Navbar = () => {
       <Box display={{ lg: "flex" }} flexBasis={{ lg: "auto" }}>
       {isDrawerSidebar ? (
         <>
-          <Button onClick={onOpen}>Open Menu</Button>
+          <Button colorScheme='teal' variant='solid' onClick={onOpen}><GiHamburgerMenu /></Button>
           <Drawer placement="left" onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay>
               <DrawerContent>
                 <DrawerCloseButton />
-                <DrawerHeader><Image src={Voyage} alt='logo' width={127} height={35} /></DrawerHeader>
-                <DrawerBody className=' font-neon'>
+                <DrawerHeader ><Image src={Voyage} alt='logo' width={127} height={35} /></DrawerHeader>
+                <DrawerBody className=' font-neon flex flex-col bg-gray-800 text-white items-center gap-12 text-lg font-normal py-12' >
                   <Link href='/'>Home</Link>
                   <Link href='/Explore'>Explore</Link>
                   <Link href='/Post'>Create Post</Link>
@@ -46,7 +48,7 @@ const Navbar = () => {
           </Drawer>
         </>
       ) : (
-        <nav className='flex flex-row justify-between w-screen bg-white shadow-lg shadow-gray-500 px-12 py-4 font-Neon text-lg items-center'>
+        <nav className='flex flex-row justify-between w-screen bg-white shadow-lg shadow-gray-500 px-24 py-4 font-Neon text-lg items-center'>
           <Link href='/'>
             <Image src={Voyage} alt='logo' width={127} height={35} />
           </Link>

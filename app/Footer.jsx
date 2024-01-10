@@ -6,7 +6,7 @@ import { Button, Input } from '@chakra-ui/react';
 
 const Footer = () => {
   return (
-    <footer className=' w-screen h-auto py-12 flex flex-row bg-black md:px-12 justify-between items-center'>
+    <footer className=' w-screen h-auto py-12 flex flex-col gap-12 md:flex-row bg-black md:px-12 justify-between items-center'>
         <div className=' flex flex-row'>
             <Input placeholder='Email' colorScheme='teal' className=' w-1/3 h-12 rounded-md bg-gray-800 text-white' />
             <Button className=' w-1/3 h-12 rounded-md bg-gray-800 text-white'>Subscribe</Button>
