@@ -11,6 +11,7 @@ module.exports = {
       backgroundImage: {
         'hero-pattern': "url('/heroimg.jpg')",
         'explore-pattern': "url('/exploreimg.jpg')",
+        'post-pattern': "url('/postimg.jpg')",
       },
       fontFamily:{
         'Tilt': ['Tilt Prism', 'sans-serif'],
