@@ -5,6 +5,7 @@ import Authors from "./Authors";
 import Ellipse from '@/public/Ellipse.svg'
 import Imgglry from '@/public/imageglry.svg'
 import Whoarewe from '@/public/whoarewe.svg'
+import Footer from "./Footer";
 
 export default function Home() {
   return (
@@ -27,8 +28,9 @@ export default function Home() {
       </section>
       <section className="flex flex-wrap md:flex-row min-h-screen">
         <BlogPosts/>
-        <Authors/>
+        {/* <Authors/> */}
       </section>
+      <Footer/>
     </main>
   )
 }

@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'hero-pattern': "url('/heroimg.jpg')",
+        'explore-pattern': "url('/exploreimg.jpg')",
       },
       fontFamily:{
         'Tilt': ['Tilt Prism', 'sans-serif'],

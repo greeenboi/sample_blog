@@ -37,9 +37,9 @@ const BlogPosts = () => {
   }
 
   return (
-    <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-fit gap-4 h-fit justify-evenly md: mx-6 my-4'>
+    <div className=' grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 w-fit gap-4 h-fit justify-evenly md: mx-6 my-4'>
       {BlogPosts.map(post => (
-        <Card maxW='md' key={post.id}  >
+        <Card maxW='lg' key={post.id} className=' p-4 shadow-md shadow-black' >
         <CardHeader>
           <Flex spacing='4'>
             <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
@@ -64,6 +64,7 @@ const BlogPosts = () => {
           objectFit='cover'
           src={post.banner_url}
           alt={post.title}
+          borderRadius={8}
         />
         <CardBody >
           <Heading size='md'>{post.title}</Heading>
