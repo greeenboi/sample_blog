@@ -14,12 +14,14 @@ import {
   Button,
   useDisclosure
 } from "@chakra-ui/react"
-
-
+import Voyage from '@/public/voyage.svg'
+import Image from 'next/image'
+import { BiPlusCircle } from 'react-icons/bi'
 
 const Navbar = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   const isDrawerSidebar = useBreakpointValue({ base: true, md: false });
 
 
@@ -33,8 +35,9 @@ const Navbar = () => {
             <DrawerOverlay>
               <DrawerContent>
                 <DrawerCloseButton />
-                <DrawerHeader>Menu</DrawerHeader>
-                <DrawerBody>
+                <DrawerHeader><Image src={Voyage} alt='logo' width={127} height={35} /></DrawerHeader>
+                <DrawerBody className=' font-neon'>
+                  <Link href='/'>Home</Link>
                   <Link href='/Explore'>Explore</Link>
                   <Link href='/Post'>Create Post</Link>
                 </DrawerBody>
@@ -43,9 +46,14 @@ const Navbar = () => {
           </Drawer>
         </>
       ) : (
-        <nav className='flex flex-row justify-evenly w-screen bg-white shadow-lg px-12 py-4'>
-          <Link href='/Explore'>Explore</Link>
-          <Link href='/Post'>Create Post</Link>
+        <nav className='flex flex-row justify-between w-screen bg-white shadow-lg shadow-gray-500 px-12 py-4 font-Neon text-lg items-center'>
+          <Link href='/'>
+            <Image src={Voyage} alt='logo' width={127} height={35} />
+          </Link>
+          <div className=' flex flex-row gap-8'>
+            <Link href='/Explore' className='flex items-center gap-1'>Explore</Link>
+            <Link href='/Post' className='flex items-center gap-1 '><BiPlusCircle/>Create Post</Link>
+          </div>
         </nav>
       )}
     </Box>

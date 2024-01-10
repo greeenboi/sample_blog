@@ -11,6 +11,10 @@ module.exports = {
       backgroundImage: {
         'hero-pattern': "url('/heroimg.jpg')",
       },
+      fontFamily:{
+        'Tilt': ['Tilt Prism', 'sans-serif'],
+        'Neon': ['Tilt Neon', 'sans-serif']
+      }
     },
   },
   plugins: [],

@@ -1,8 +1,13 @@
 import React from 'react'
+import BlogPosts from '../BlogPosts'
+import Navbar from '../Navbar'
 
 function page() {
   return (
-    <div>Explore</div>
+    <main className=' w-screen h-auto'>
+      <Navbar />
+      <BlogPosts />
+    </main>
   )
 }
 
