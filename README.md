@@ -8,6 +8,10 @@
 - React Icons
 - Supabase DB
 - Supabase Storage
+
+***
+## Assets
+[download](https://drive.google.com/drive/folders/1ngEb50wbqjK10Y9J15cvgFnxi1ff5hfj?usp=sharing)
 ***
 ## Gists
 
