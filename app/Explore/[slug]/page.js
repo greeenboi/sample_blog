@@ -7,7 +7,7 @@ import { Badge, Spinner } from "@chakra-ui/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function page({params}) {
+export default function Page({params}) {
   const [blogPost, setBlogPost] = useState([])
   const [loading, setLoading] = useState(false)
 

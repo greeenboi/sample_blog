@@ -6,7 +6,7 @@ import Footer from '../Footer'
 import Navbar from '../Navbar'
 import { FaPlus } from 'react-icons/fa6'
 
-function page() {
+export default function Page() {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [ banner_url, setBannerUrl ] = useState('')
@@ -137,5 +137,3 @@ function page() {
     </main>
   )
 }
-
-export default page

@@ -4,7 +4,7 @@ import Navbar from '../Navbar'
 import Footer from '../Footer'
 
 
-function page() {
+export default function Page() {
   return (
     <main className=' w-screen h-auto'>
       <Navbar />
@@ -16,4 +16,3 @@ function page() {
   )
 }
 
-export default page

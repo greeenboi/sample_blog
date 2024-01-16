@@ -7,7 +7,7 @@ import Imgglry from '@/public/imageglry.svg'
 import Whoarewe from '@/public/whoarewe.svg'
 import Footer from "./Footer";
 
-export default function Home() {
+export default function Page() {
   return (
     <main className="w-screen min-h-screen h-full flex flex-col">
       <section className="w-screen h-[420px] md:h-[500px] lg:h-[720px] overflow-hidden  bg-hero-pattern object-cover bg-center bg-cover bg-no-repeat bg-blend-soft-light">
