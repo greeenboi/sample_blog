@@ -17,6 +17,7 @@
     "@supabase/auth-ui-react": "^0.4.6",
     "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/supabase-js": "^2.39.1",
+    "@vercel/analytics": "^1.1.1",
     "framer-motion": "^10.16.16",
     "next": "14.0.4",
     "react": "^18",
